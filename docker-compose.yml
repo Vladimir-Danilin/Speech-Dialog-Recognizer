@@ -1,0 +1,19 @@
+services:
+  vosk:
+    image: alphacep/kaldi-ru:latest
+    restart: always
+    ports:
+      - "2700:2700"
+    volumes:
+      - ./vosk-model-ru-0.42:/opt/vosk/vosk-model-ru-0.42
+      - ./vosk-model-spk-0.4:/opt/vosk/vosk-model-spk-0.4
+    environment:
+        VOSK_MODEL_PATH: "/opt/vosk/vosk-model-ru-0.42"
+        VOSK_SPK_MODEL_PATH: "/opt/vosk/vosk-model-spk-0.4"
+
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      VOSK_SERVER: "ws://vosk:2700"

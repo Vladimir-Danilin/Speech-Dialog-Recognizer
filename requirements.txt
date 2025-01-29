@@ -1,0 +1,9 @@
+flask~=3.1.0
+vosk~=0.3.45
+requests~=2.32.3
+
+numpy
+sox~=1.5.0
+scikit-learn~=1.5.2
+
+librosa~=0.10.2.post1
